@@ -15,11 +15,11 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
       - name: php
         image: php:fpm
         ports:
         - containerPort: 9000
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
