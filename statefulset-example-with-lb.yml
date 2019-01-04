@@ -5,10 +5,11 @@ metadata:
   labels:
     app: nginx
   annotations:
-    service-per-pod-label: "pod-name"
+    service-per-pod-label: "statefulset.kubernetes.io/pod-name"
     service-per-pod-ports: "80:80"
 spec:
   replicas: 3
+  podManagementPolicy: "Parallel"
   selector:
     matchLabels:
       app: nginx
@@ -27,7 +28,7 @@ spec:
         ports:
         - containerPort: 80
       - name: php
-        image: php:7.2-fpm
+        image: php:fpm
         volumeMounts:
         - mountPath: /var/www/html
           name: data
